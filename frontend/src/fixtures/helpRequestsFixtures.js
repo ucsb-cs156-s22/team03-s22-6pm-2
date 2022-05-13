@@ -20,7 +20,7 @@ const helpRequestsFixtures = {
         },
         {
             "explanation": "team02",
-            "id": 3,
+            "id": 2,
             "requestTime": "2022-06-14T05:19:43",
             "requesterEmail": "def@ucsb.edu",
             "solved": false,
@@ -29,7 +29,7 @@ const helpRequestsFixtures = {
         },
         {
             "explanation": "jpa03",
-            "id": 4,
+            "id": 3,
             "requestTime": "2022-05-15T05:19:43",
             "requesterEmail": "jgh@ucsb.edu",
             "solved": false,

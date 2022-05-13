@@ -39,15 +39,15 @@ export default function HelpRequestsTable({ helpRequests, currentUser }) {
     const columns = [
         {
             Header: 'Explanation',
-            accessor: 'explanation', 
+            accessor: 'explanation'
         },
         {
             Header: 'ID',
-            accessor: 'id',
+            accessor: 'id'
         },
         {
             Header: 'RequestTime',
-            accessor: 'requestTime',
+            accessor: 'requestTime'
         },
         {
             Header: 'Solved',
@@ -56,11 +56,11 @@ export default function HelpRequestsTable({ helpRequests, currentUser }) {
         },
         {
             Header: 'TableOrBreakoutRoom',
-            accessor: 'tableOrBreakoutRoom',
+            accessor: 'tableOrBreakoutRoom'
         },
         {
             Header: 'TeamID',
-            accessor: 'teamId',
+            accessor: 'teamId'
         },
     ];
 
