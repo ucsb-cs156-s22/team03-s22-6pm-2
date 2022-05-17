@@ -11,9 +11,9 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
           <AppNavbarLocalhost url={currentUrl} />
         )
       }
-      <Navbar expand="xl" variant="dark" bg="dark" sticky="top" data-testid="AppNavbar">
+      <Navbar defaultExpanded="false" expand="xl" variant="dark" bg="dark" sticky="top" data-testid="AppNavbar">
         <Container>
-          <Navbar.Brand as={Link} to="/">
+          <Navbar.Brand as={Link} to="/" style={{marginLeft: "-50px"}}>
             Example
           </Navbar.Brand>
 
@@ -57,14 +57,14 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
               }
                {
                 hasRole(currentUser, "ROLE_USER") && (
-                  <NavDropdown title="UCSB Dining Commons" id="appnavbar-dining-commons-dropdown" data-testid="appnavbar-dining-commons-dropdown" >
+                  <NavDropdown title="Dining Commons" id="appnavbar-dining-commons-dropdown" data-testid="appnavbar-dining-commons-dropdown" >
                     <NavDropdown.Item as={Link} to="/diningCommons/list" data-testid="appnavbar-dining-commons-list">List Dining Commons</NavDropdown.Item>
                   </NavDropdown>
                 )
               }
               {
                 hasRole(currentUser, "ROLE_USER") && (
-                  <NavDropdown title="UCSBDates" id="appnavbar-ucsbdates-dropdown" data-testid="appnavbar-ucsbdates-dropdown" >
+                  <NavDropdown title="Dates" id="appnavbar-ucsbdates-dropdown" data-testid="appnavbar-ucsbdates-dropdown" >
                     <NavDropdown.Item as={Link} to="/ucsbdates/list" data-testid="appnavbar-ucsbdates-list">List</NavDropdown.Item>
                     {
                       hasRole(currentUser, "ROLE_ADMIN") && (
