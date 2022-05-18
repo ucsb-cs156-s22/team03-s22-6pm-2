@@ -15,7 +15,7 @@ export function cellToAxiosParamsDelete(cell) {
     }
 }
 
-export default function MenuItemsCommonsTable({ menuItem, currentUser }) {
+export default function MenuItemTable({ menuItem, currentUser }) {
 
     // const navigate = useNavigate();
 
