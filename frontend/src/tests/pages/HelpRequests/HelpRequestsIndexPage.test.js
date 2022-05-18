@@ -1,7 +1,7 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import HelpRequestsTable from "main/pages/HelpRequests/HelpRequestsIndexPage";
+
 
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
