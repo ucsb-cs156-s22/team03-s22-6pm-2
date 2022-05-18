@@ -1,8 +1,8 @@
-import OurTable, { _ButtonColumn} from "main/components/OurTable";
-// import { useBackendMutation } from "main/utils/useBackend";
-// import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
+import OurTable, { ButtonColumn} from "main/components/OurTable";
+import { useBackendMutation } from "main/utils/useBackend";
+import {cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDateUtils"
 // import { useNavigate } from "react-router-dom";
-// import { hasRole } from "main/utils/currentUser";
+import { hasRole } from "main/utils/currentUser";
 
 
 // export function cellToAxiosParamsDelete(cell) {
@@ -15,7 +15,7 @@ import OurTable, { _ButtonColumn} from "main/components/OurTable";
 //     }
 // }
 
-export default function ReviewTable({ review, _currentUser }) {
+export default function ReviewTable({ review, currentUser }) {
 
     // const navigate = useNavigate();
 
@@ -24,15 +24,15 @@ export default function ReviewTable({ review, _currentUser }) {
     // }
 
     // Stryker disable all : hard to test for query caching
-    // const deleteMutation = useBackendMutation(
-    //     cellToAxiosParamsDelete,
-    //     { onSuccess: onDeleteSuccess },
-    //     ["/api/ucsbdiningcommons/all"]
-    // );
+    const deleteMutation = useBackendMutation(
+        cellToAxiosParamsDelete,
+        { onSuccess: onDeleteSuccess },
+        ["/api/ucsbdiningcommons/all"]
+    );
     // Stryker enable all 
 
     // Stryker disable next-line all : TODO try to make a good test for this
-    // const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
+    const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
     const columns = [
         {
@@ -58,16 +58,15 @@ export default function ReviewTable({ review, _currentUser }) {
         },
     ];
 
-    // const testid = "ReviewTable";
+    const testid = "ReviewTable";
 
-    // const columnsIfAdmin = [
-    //     ...columns,
-    //     // ButtonColumn("Edit", "primary", editCallback, testid),
-    //     ButtonColumn("Delete", "danger", deleteCallback, testid)
-    // ];
+    const columnsIfAdmin = [
+        ...columns,
+        // ButtonColumn("Edit", "primary", editCallback, testid),
+        ButtonColumn("Delete", "danger", deleteCallback, testid)
+    ];
 
-    // const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
-    const columnsToDisplay = columns;
+    const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
     return <OurTable
         data={review}
