@@ -169,5 +169,3 @@ describe("UCSBDatesIndexPage tests", () => {
     });
 
 });
-
-
