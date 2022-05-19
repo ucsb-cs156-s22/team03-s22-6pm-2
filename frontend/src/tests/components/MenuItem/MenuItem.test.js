@@ -62,15 +62,15 @@ describe("MenuItemTable tests", () => {
     const { getByText, getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-        <MenuItemTable menuItem={[menuItemFixtures.threeMenuItems]} currentUser = {currentUser}/>
+        <MenuItemTable menuItem={menuItemFixtures.threeMenuItems} currentUser = {currentUser}/>
         </MemoryRouter>
       </QueryClientProvider>
 
     );
 
 
-    const expectedHeaders = ['Dining Commons Code',  'Name' , 'Station'];
-    const expectedFields = ['diningCommonsCode', 'name', 'station']
+    const expectedHeaders = ['id','Dining Commons Code',  'Name' , 'Station'];
+    const expectedFields = ['id', 'diningCommonsCode', 'name', 'station']
     const testId = "MenuItemTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -83,10 +83,12 @@ describe("MenuItemTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(getByTestId(`${testId}-cell-row-0-col-diningCommonscode`)).toHaveTextContent("dlg");
-    expect(getByTestId(`${testId}-cell-row-1-col-diningCode`)).toHaveTextContent("ortega");
-    expect(getByTestId(`${testId}-cell-row-0-col-name`)).toHaveTextContent("test3");
-    expect(getByTestId(`${testId}-cell-row-1-col-name`)).toHaveTextContent("test2");
+    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
+    expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+    expect(getByTestId(`${testId}-cell-row-0-col-diningCommonsCode`)).toHaveTextContent("dlg");
+    expect(getByTestId(`${testId}-cell-row-1-col-diningCommonsCode`)).toHaveTextContent("ortega");
+    expect(getByTestId(`${testId}-cell-row-0-col-name`)).toHaveTextContent("tofu banh mi");
+    expect(getByTestId(`${testId}-cell-row-1-col-name`)).toHaveTextContent("pizza");
 
     // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     // expect(editButton).toBeInTheDocument();

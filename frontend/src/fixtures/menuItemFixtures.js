@@ -1,26 +1,32 @@
 const menuItemFixtures = {
     oneMenuItem: 
              {
+            "id": 1,
             "diningCommonsCode": "dlg",
-            "station": "test3",
-            "name": "tofu banh mi"
+            "name": "tofu banh mi",
+            "station": "test3"
+            
         }
 ,
     threeMenuItems: [
-        {
+        {   
+            'id': 1,
             "diningCommonsCode": "dlg",
-            "station": "test3",
-            "name": "tofu banh mi"
+            "name": "tofu banh mi",
+            "station": "yum"
+           
         } ,
-        {
+        {   "id": 2,
             "diningCommonsCode": "ortega",
-            "station": "test2",
-            "name": "pizza"
+            "name": "pizza",
+            "station": "test"
         } ,
-        {
+        {   
+            "id": 3,
             "diningCommonsCode": "portola",
-            "station": "test1",
-            "name": "taco bell"
+            "name": "taco bell",
+            "station": "woo"
+         
         } 
     ]
 };
