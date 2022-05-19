@@ -1,15 +1,16 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import OrganizationsIndexPage from "main/pages/Organizatoins/OrganizationsIndexPage";
+
 
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { organizatoinsFixtures } from "fixtures/organizationsFixtures";
+import { organizationsFixtures } from "fixtures/organizationsFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import mockConsole from "jest-mock-console";
+import OrganizationsIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
 
 
 const mockToast = jest.fn();
@@ -26,7 +27,7 @@ describe("OrganizationsIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
-    const testId = "OrganizatoinsTable";
+    const testId = "OrganizationsTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
@@ -74,7 +75,7 @@ describe("OrganizationsIndexPage tests", () => {
 
     });
 
-    test("renders three organizations without crashing for regular user", async () => {
+    test("renders three help requests without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/ucsborganization/all").reply(200, organizationsFixtures.threeOrganizations);
@@ -93,7 +94,7 @@ describe("OrganizationsIndexPage tests", () => {
 
     });
 
-    test("renders three organizations without crashing for admin user", async () => {
+    test("renders three help requests without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/ucsborganization/all").reply(200, organizationsFixtures.threeOrganizations);
@@ -139,13 +140,13 @@ describe("OrganizationsIndexPage tests", () => {
 
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/ucsborganization/all").reply(200, organizationsFixtures.threeOrganizations);
-        axiosMock.onDelete("/api/ucsborganization").reply(200, "Organization with id 1 was deleted");
+        axiosMock.onDelete("/api/ucsborganization",{params:{id:1}}).reply(200, "Organization with id 1 deleted");
 
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <UCSBDatesIndexPage />
+                    <OrganizationsIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -157,13 +158,11 @@ describe("OrganizationsIndexPage tests", () => {
 
         const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
         expect(deleteButton).toBeInTheDocument();
-       
+
         fireEvent.click(deleteButton);
 
-        await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBDate with id 1 was deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("Organization with id 1 deleted") });
 
     });
 
 });
-
-

@@ -1,8 +1,18 @@
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDateUtils"
-import { _useNavigate } from "react-router-dom";
+import { onDeleteSuccess } from "main/utils/UCSBDateUtils"
+//import { _useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
+
+export function cellToAxiosParamsDelete(cell) {
+    return {
+        url: "/api/ucsbdates",
+        method: "DELETE",
+        params: {
+            orgCode: cell.row.values.orgCode
+        }
+    }
+}
 
 export default function UCSBOrganizationsTable({ organizations, currentUser }) {
     /*
@@ -38,14 +48,14 @@ export default function UCSBOrganizationsTable({ organizations, currentUser }) {
         },
         {
             Header: 'Inactive?',
-            accessor: 'inactive',
+            accessor: (row, _rowIndex) => String(row.inactive),
         }
     ];
 
     const columnsIfAdmin = [
         ...columns,
         //ButtonColumn("Edit", "primary", editCallback, "UCSBOrganizationsTable"),
-        ButtonColumn("Delete", "danger", deleteCallback, "UCSBOrganizationsTable")
+        ButtonColumn("Delete", "danger", deleteCallback, "UCSBOrganizationsTable", "orgCode")
     ];
 
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;

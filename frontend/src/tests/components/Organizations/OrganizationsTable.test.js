@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { _fireEvent, render, _waitFor } from "@testing-library/react";
 import { organizationsFixtures } from "fixtures/organizationsFixtures";
 import OrganizationsTable from "main/components/Organizations/OrganizationsTable"
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -23,7 +23,7 @@ describe("OrganizationsTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <OrganizationsTable dates={[]} currentUser={currentUser} />
+          <OrganizationsTable organizations={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -35,7 +35,7 @@ describe("OrganizationsTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <OrganizationsTable dates={[]} currentUser={currentUser} />
+          <OrganizationsTable organizations={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -48,28 +48,28 @@ describe("OrganizationsTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <OrganizationsTable dates={[]} currentUser={currentUser} />
+          <OrganizationsTable organizations={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
     );
   });
 
-  test("Has the expected colum headers and content for adminUser", () => {
+  test("Has the expected column headers and content for adminUser", () => {
 
     const currentUser = currentUserFixtures.adminUser;
 
     const { getByText, getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <OrganizationsTable dates={organizationsFixtures.threeDates} currentUser={currentUser} />
+          <OrganizationsTable organizations={organizationsFixtures.threeOrganizations} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
     );
 
-    const expectedHeaders = ["orgCode", "orgTranslationShort", "orgTranslation", "Inactive?"];
-    const expectedFields = ["orgCode", "orgTranslationShort", "orgTranslation", "Inactive?"];
+    const expectedHeaders = ["Org Code", "Org Translation Short", "Org Translation", "Inactive?"];
+    const expectedFields = ["orgCode", "orgTranslationShort", "orgTranslation", "inactive"];
     const testId = "OrganizationsTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -96,28 +96,20 @@ describe("OrganizationsTable tests", () => {
   });
   /*
   test("Edit button navigates to the edit page for admin user", async () => {
-
     const currentUser = currentUserFixtures.adminUser;
-
     const { getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBDatesTable dates={ucsbDatesFixtures.threeDates} currentUser={currentUser} />
+          <HelpRequestsTable helpRequests={helpRequestsFixtures.threeHelpRequests} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
-
     );
-
-    await waitFor(() => { expect(getByTestId(`UCSBDatesTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
-
-    const editButton = getByTestId(`UCSBDatesTable-cell-row-0-col-Edit-button`);
+    await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); });
+    const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();
     
     fireEvent.click(editButton);
-
     await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsbdates/edit/1'));
-
-  });*/
-
+  });
+  */
 });
-
