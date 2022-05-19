@@ -94,4 +94,22 @@ describe("HelpReqeustsTable tests", () => {
     expect(deleteButton).toHaveClass("btn-danger");
     */
   });
+  /*
+  test("Edit button navigates to the edit page for admin user", async () => {
+    const currentUser = currentUserFixtures.adminUser;
+    const { getByTestId } = render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <HelpRequestsTable helpRequests={helpRequestsFixtures.threeHelpRequests} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
+    );
+    await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); });
+    const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
+    expect(editButton).toBeInTheDocument();
+    
+    fireEvent.click(editButton);
+    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsbdates/edit/1'));
+  });
+  */
 });
