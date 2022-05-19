@@ -8,15 +8,12 @@ import TodosCreatePage from "main/pages/Todos/TodosCreatePage";
 import TodosEditPage from "main/pages/Todos/TodosEditPage";
 
 import OrganizationsIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
-
 import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexPage";
 import RecommendationsIndexPage from "main/pages/Recommendations/RecommendationsIndexPage";
 
 import UCSBDatesIndexPage from "main/pages/UCSBDates/UCSBDatesIndexPage";
 import UCSBDatesCreatePage from "main/pages/UCSBDates/UCSBDatesCreatePage";
 import UCSBDatesEditPage from "main/pages/UCSBDates/UCSBDatesEditPage";
-
-import OrganizationsIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
 
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
