@@ -57,7 +57,7 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
               }
                {
                 hasRole(currentUser, "ROLE_USER") && (
-                  <NavDropdown title="UCSB Dining Commons" id="appnavbar-dining-commons-dropdown" data-testid="appnavbar-dining-commons-dropdown" >
+                  <NavDropdown title="Dining Commons" id="appnavbar-dining-commons-dropdown" data-testid="appnavbar-dining-commons-dropdown" >
                     <NavDropdown.Item as={Link} to="/diningCommons/list" data-testid="appnavbar-dining-commons-list">List Dining Commons</NavDropdown.Item>
                   </NavDropdown>
                 )
@@ -71,13 +71,20 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
               }
               {
                 hasRole(currentUser, "ROLE_USER") && (
-                  <NavDropdown title="UCSBDates" id="appnavbar-ucsbdates-dropdown" data-testid="appnavbar-ucsbdates-dropdown" >
+                  <NavDropdown title="Dates" id="appnavbar-ucsbdates-dropdown" data-testid="appnavbar-ucsbdates-dropdown" >
                     <NavDropdown.Item as={Link} to="/ucsbdates/list" data-testid="appnavbar-ucsbdates-list">List</NavDropdown.Item>
                     {
                       hasRole(currentUser, "ROLE_ADMIN") && (
                         <NavDropdown.Item as={Link} to="/ucsbdates/create" data-testid="appnavbar-ucsbdates-create">Create</NavDropdown.Item>
                       )
                     }
+                  </NavDropdown>
+                )
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Organizations" id="appnavbar-organizations-dropdown" data-testid="appnavbar-organizations-dropdown" >
+                    <NavDropdown.Item as={Link} to="/organizations/list" data-testid="appnavbar-organizations-list">List Organizations</NavDropdown.Item>
                   </NavDropdown>
                 )
               }
