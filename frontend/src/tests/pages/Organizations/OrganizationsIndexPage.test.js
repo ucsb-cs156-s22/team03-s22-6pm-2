@@ -3,7 +3,6 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
 
-
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { OrganizationsFixtures } from "fixtures/organizationsFixtures";
@@ -79,6 +78,7 @@ describe("OrganizationsIndexPage tests", () => {
         setupUserOnly();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/ucsborganization/all").reply(200, OrganizationsFixtures.threeOrganizations);
+
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
