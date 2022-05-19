@@ -308,4 +308,5 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
                 assertEquals("UCSBOrganization with id edt not found", json.get("message"));
 
         }
-}
+} 
+
