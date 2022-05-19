@@ -9,7 +9,7 @@ const reviewFixtures = {
     },
     threeReviews: [
         {
-            "id":1,
+            "id": 1,
             "itemId": 10,
             "reviewerEmail":"cgaucho@ucsb.edu",
             "stars": 3,
@@ -17,7 +17,7 @@ const reviewFixtures = {
             "comments":"Meh"
         },
         {
-            "id":2,
+            "id": 2,
             "itemId": 3,
             "reviewerEmail":"sgaucho@ucsb.edu",
             "stars": 4,
@@ -25,7 +25,7 @@ const reviewFixtures = {
             "comments":"ok"
         },
         {
-            "id":3,
+            "id": 3,
             "itemId": 12,
             "reviewerEmail":"mgaucho@ucsb.edu",
             "stars": 5,

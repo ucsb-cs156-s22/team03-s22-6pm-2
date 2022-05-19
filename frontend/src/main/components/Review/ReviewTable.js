@@ -1,19 +1,19 @@
 import OurTable, { ButtonColumn} from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
-import {cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDateUtils"
+import { onDeleteSuccess } from "main/utils/UCSBDateUtils"
 // import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
 
-// export function cellToAxiosParamsDelete(cell) {
-//     return {
-//         url: "/api/ucsbdiningcommons",
-//         method: "DELETE",
-//         params: {
-//             code: cell.row.values.code
-//         }
-//     }
-// }
+export function cellToAxiosParamsDelete(cell) {
+    return {
+        url: "/api/MenuItemReview",
+        method: "DELETE",
+        params: {
+            id: cell.row.values.id
+        }
+    }
+}
 
 export default function ReviewTable({ review, currentUser }) {
 
@@ -27,7 +27,7 @@ export default function ReviewTable({ review, currentUser }) {
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/ucsbdiningcommons/all"]
+        ["/api/MenuItemReview/all"]
     );
     // Stryker enable all 
 
@@ -35,6 +35,10 @@ export default function ReviewTable({ review, currentUser }) {
     const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
     const columns = [
+        {
+            Header: 'id',
+            accessor: 'id', // accessor is the "key" in the data
+        },
         {
             Header: 'itemID',
             accessor: 'itemId', 
