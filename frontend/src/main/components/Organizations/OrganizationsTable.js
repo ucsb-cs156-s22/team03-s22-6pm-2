@@ -20,8 +20,8 @@ export default function UCSBOrganizationsTable({ organizations, currentUser }) {
 
     const editCallback = (cell) => {
         navigate(`/ucsborganization/edit/${cell.row.values.id}`)
-    }
-    */
+    }aa
+    */ 
     // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
