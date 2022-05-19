@@ -1,17 +1,17 @@
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
 import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDateUtils"
-import { useNavigate } from "react-router-dom";
+import { _useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
 export default function UCSBOrganizationsTable({ organizations, currentUser }) {
-
+    /*
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
         navigate(`/ucsborganization/edit/${cell.row.values.id}`)
     }
-
+    */
     // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
@@ -44,7 +44,7 @@ export default function UCSBOrganizationsTable({ organizations, currentUser }) {
 
     const columnsIfAdmin = [
         ...columns,
-        ButtonColumn("Edit", "primary", editCallback, "UCSBOrganizationsTable"),
+        //ButtonColumn("Edit", "primary", editCallback, "UCSBOrganizationsTable"),
         ButtonColumn("Delete", "danger", deleteCallback, "UCSBOrganizationsTable")
     ];
 
