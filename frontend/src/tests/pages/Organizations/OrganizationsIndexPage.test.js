@@ -140,7 +140,7 @@ describe("OrganizationsIndexPage tests", () => {
 
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/ucsborganization/all").reply(200, OrganizationsFixtures.threeOrganizations);
-        axiosMock.onDelete("/api/ucsborganization",{params:{id:1}}).reply(200, "Organization with id 1 deleted");
+        axiosMock.onDelete("/api/ucsborganization",{params:{orgCode:"1"}}).reply(200, "Organization with orgCode 1 deleted");
 
 
         const { getByTestId } = render(
@@ -161,7 +161,7 @@ describe("OrganizationsIndexPage tests", () => {
 
         fireEvent.click(deleteButton);
 
-        await waitFor(() => { expect(mockToast).toBeCalledWith("Organization with id 1 deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("Organization with orgCode 1 deleted") });
 
     });
 

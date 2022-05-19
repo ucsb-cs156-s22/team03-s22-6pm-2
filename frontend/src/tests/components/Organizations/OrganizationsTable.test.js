@@ -68,7 +68,7 @@ describe("OrganizationsTable tests", () => {
 
     );
 
-    const expectedHeaders = ["Org Code", "Org Translation Short", "Org Translation", "Inactive?"];
+    const expectedHeaders = ["Org Code", "Org Translation Short", "Org Translation", "inactive"];
     const expectedFields = ["orgCode", "orgTranslationShort", "orgTranslation", "inactive"];
     const testId = "UCSBOrganizationsTable";
 
@@ -89,7 +89,7 @@ describe("OrganizationsTable tests", () => {
     expect(editButton).toBeInTheDocument();
     expect(editButton).toHaveClass("btn-primary");
     */
-    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-Button`);
+    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");
 
