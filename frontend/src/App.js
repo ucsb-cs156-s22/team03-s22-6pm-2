@@ -9,6 +9,8 @@ import TodosEditPage from "main/pages/Todos/TodosEditPage";
 
 import OrganizationsIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
 import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexPage";
+import ReviewIndexPage from "main/pages/Review/ReviewIndexPage";
+
 import RecommendationsIndexPage from "main/pages/Recommendations/RecommendationsIndexPage";
 
 import HelpRequestsIndexPage from "main/pages/HelpRequests/HelpRequestsIndexPage"
@@ -58,6 +60,13 @@ function App() {
           hasRole(currentUser, "ROLE_USER") && (
             <>
               <Route exact path="/diningCommons/list" element={<DiningCommonsIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/review/list" element={<ReviewIndexPage />} />
             </>
           )
         }
