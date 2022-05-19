@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { _fireEvent, render, _waitFor } from "@testing-library/react";
 //import { organizationsFixtures } from "fixtures/organizationsFixtures";
 import OrganizationsTable from "main/components/Organizations/OrganizationsTable"
 import { QueryClient, QueryClientProvider } from "react-query";
