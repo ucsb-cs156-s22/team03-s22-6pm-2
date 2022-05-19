@@ -281,8 +281,9 @@ describe("AppNavbar tests", () => {
         aElement?.click();
         await waitFor( () => expect(getByTestId(/appnavbar-organizations-list/)).toBeInTheDocument() );
 
+        
     });
     
 });
-
+  
 
