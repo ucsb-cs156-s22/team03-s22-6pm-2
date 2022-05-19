@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { _fireEvent, render, _waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import OrganizationsIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
@@ -26,7 +26,7 @@ describe("OrganizationsIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
-    const testId = "DiningCommonsTable";
+    const _testId = "DiningCommonsTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
