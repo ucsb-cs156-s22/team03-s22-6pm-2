@@ -7,7 +7,9 @@ import TodosIndexPage from "main/pages/Todos/TodosIndexPage";
 import TodosCreatePage from "main/pages/Todos/TodosCreatePage";
 import TodosEditPage from "main/pages/Todos/TodosEditPage";
 
+import OrganizationsIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
 import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexPage";
+import RecommendationsIndexPage from "main/pages/Recommendations/RecommendationsIndexPage";
 
 import HelpRequestsIndexPage from "main/pages/HelpRequests/HelpRequestsIndexPage"
 
@@ -45,10 +47,13 @@ function App() {
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
-              <Route exact path="/help-requests/list" element={<HelpRequestsIndexPage />} />
+            <Route exact path="/help-requests/list" element={<HelpRequestsIndexPage />} />
             </>
           )
         }
+
+
+
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
@@ -60,6 +65,20 @@ function App() {
           hasRole(currentUser, "ROLE_USER") && (
             <>
               <Route exact path="/ucsbdates/list" element={<UCSBDatesIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/recommendations/list" element={<RecommendationsIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/organizations/list" element={<OrganizationsIndexPage />} />
             </>
           )
         }
