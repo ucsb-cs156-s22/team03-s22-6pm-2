@@ -1,4 +1,4 @@
-import { _fireEvent, render, waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -134,7 +134,6 @@ describe("HelpRequestsIndexPage tests", () => {
 
         expect(queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
     });
-    /*
     test("test what happens when you click delete, admin", async () => {
         setupAdminUser();
 
@@ -164,5 +163,7 @@ describe("HelpRequestsIndexPage tests", () => {
         await waitFor(() => { expect(mockToast).toBeCalledWith("HelpRequest with id 1 deleted") });
 
     });
-    */
+
 });
+
+
