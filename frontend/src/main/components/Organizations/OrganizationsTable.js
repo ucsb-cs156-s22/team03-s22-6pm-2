@@ -6,7 +6,7 @@ import { hasRole } from "main/utils/currentUser";
 
 export function cellToAxiosParamsDelete(cell) {
     return {
-        url: "/api/ucsbdates",
+        url: "/api/ucsborganization",
         method: "DELETE",
         params: {
             orgCode: cell.row.values.orgCode

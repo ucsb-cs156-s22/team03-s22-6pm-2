@@ -1,5 +1,5 @@
 import { _fireEvent, render, _waitFor } from "@testing-library/react";
-import { organizationsFixtures } from "fixtures/organizationsFixtures";
+import { OrganizationsFixtures } from "fixtures/organizationsFixtures";
 import OrganizationsTable from "main/components/Organizations/OrganizationsTable"
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -62,7 +62,7 @@ describe("OrganizationsTable tests", () => {
     const { getByText, getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <OrganizationsTable organizations={organizationsFixtures.threeOrganizations} currentUser={currentUser} />
+          <OrganizationsTable organizations={OrganizationsFixtures.threeOrganizations} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -70,7 +70,7 @@ describe("OrganizationsTable tests", () => {
 
     const expectedHeaders = ["Org Code", "Org Translation Short", "Org Translation", "Inactive?"];
     const expectedFields = ["orgCode", "orgTranslationShort", "orgTranslation", "inactive"];
-    const testId = "OrganizationsTable";
+    const testId = "UCSBOrganizationsTable";
 
     expectedHeaders.forEach((headerText) => {
       const header = getByText(headerText);
@@ -82,14 +82,14 @@ describe("OrganizationsTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
-    expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+    expect(getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("1");
+    expect(getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("2");
     /*
     const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();
     expect(editButton).toHaveClass("btn-primary");
     */
-    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-Button`);
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");
 
