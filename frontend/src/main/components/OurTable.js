@@ -83,7 +83,7 @@ export default function OurTable({ columns, data, testid = "testid" }) {
 //   ButtonColumn("Delete", "danger", deleteCallback)
 // ];
 
-export function ButtonColumn(label, variant, callback, testid, idfield = 'id') {
+export function ButtonColumn(label, variant, callback, testid, idfield="id") {
   const column = {
     Header: label,
     id: label,
