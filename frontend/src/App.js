@@ -9,6 +9,7 @@ import TodosEditPage from "main/pages/Todos/TodosEditPage";
 
 import OrganizationsIndexPage from "main/pages/Organizations/OrganizationsIndexPage";
 import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexPage";
+import MenuItemsIndexPage from "main/pages/MenuItems/MenuItemsIndexPage";
 
 import HelpRequestsIndexPage from "main/pages/HelpRequests/HelpRequestsIndexPage"
 
@@ -78,6 +79,14 @@ function App() {
             </>
           )
         }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+                <Route exact path="/menuItems/list" element={<MenuItemsIndexPage />} />
+          </>
+          )
+        }
+
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
