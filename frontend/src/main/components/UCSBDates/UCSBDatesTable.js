@@ -39,7 +39,7 @@ export default function UCSBDatesTable({ dates, currentUser }) {
         {
             Header: 'Date',
             accessor: 'localDateTime',
-        }
+        } 
     ];
 
     const columnsIfAdmin = [
