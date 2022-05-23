@@ -1,29 +1,21 @@
-import OurTable, { _ButtonColumn} from "main/components/OurTable";
-// import { useBackendMutation } from "main/utils/useBackend";
-// import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
-// import { useNavigate } from "react-router-dom";
-// import { hasRole } from "main/utils/currentUser";
-
-
-export default function ReviewTable({ review, _currentUser }) {
 import OurTable, { ButtonColumn} from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
-import { onDeleteSuccess } from "main/utils/UCSBDateUtils"
+import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
 // import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
 
 export function cellToAxiosParamsDelete(cell) {
     return {
-        url: "/api/MenuItemReview",
+        url: "/api/Recommendation",
         method: "DELETE",
         params: {
-            id: cell.row.values.id
+            id: cell.row.values.id 
         }
     }
 }
 
-export default function ReviewTable({ review, currentUser }) {
+export default function RecommendationsTable({ recommendations, currentUser }) {
 
     // const navigate = useNavigate();
 
@@ -31,12 +23,11 @@ export default function ReviewTable({ review, currentUser }) {
     //     navigate(`/ucsbdates/edit/${cell.row.values.id}`)
     // }
 
-
-    // Stryker disable next-line all : TODO try to make a good test for this
+    // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/MenuItemReview/all"]
+        ["/api/Recommendation/all"]
     );
     // Stryker enable all 
 
@@ -45,34 +36,37 @@ export default function ReviewTable({ review, currentUser }) {
 
     const columns = [
         {
-            Header: 'id',
+            Header: 'Id',
             accessor: 'id', 
         },
         {
-            Header: 'itemID',
-            accessor: 'itemId', 
+            Header: 'Date Needed',
+            accessor: 'dateNeeded',
         },
         {
-            Header: 'reviewerEmail',
-            accessor: 'reviewerEmail',
+            Header: 'Date Requested',
+            accessor: 'dateRequested',
         },
         {
-            Header: 'stars',
-            accessor: 'stars', // needed for tests
+            Header: 'Done',
+            id: 'done',
+            accessor: (row, _rowIndex) => String(row.done)
         },
         {
-            Header: 'date reviewed',
-            accessor: 'dateReviewed', // needed for tests
-
+            Header: 'Explanation',
+            accessor: 'explanation',
         },
         {
-            Header: 'comments?',
-            accessor: 'comments', // needed for tests
+            Header: 'Professor Email',
+            accessor: 'professorEmail',
         },
+        {
+            Header: 'Requester Email',
+            accessor: 'requesterEmail',
+        }
     ];
 
-
-    const testid = "ReviewTable";
+    const testid = "RecommendationsTable";
 
     const columnsIfAdmin = [
         ...columns,
@@ -83,8 +77,8 @@ export default function ReviewTable({ review, currentUser }) {
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
     return <OurTable
-        data={review}
+        data={recommendations}
         columns={columnsToDisplay}
-        testid={"ReviewTable"}
+        testid={testid}
     />;
 };

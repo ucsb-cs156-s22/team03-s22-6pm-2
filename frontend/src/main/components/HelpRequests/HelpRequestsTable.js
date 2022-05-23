@@ -1,21 +1,13 @@
-import OurTable, { _ButtonColumn} from "main/components/OurTable";
-// import { useBackendMutation } from "main/utils/useBackend";
-// import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
-// import { useNavigate } from "react-router-dom";
-// import { hasRole } from "main/utils/currentUser";
-
-
-export default function ReviewTable({ review, _currentUser }) {
 import OurTable, { ButtonColumn} from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
-import { onDeleteSuccess } from "main/utils/UCSBDateUtils"
+import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
 // import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
 
 export function cellToAxiosParamsDelete(cell) {
     return {
-        url: "/api/MenuItemReview",
+        url: "/api/HelpRequest",
         method: "DELETE",
         params: {
             id: cell.row.values.id
@@ -23,7 +15,7 @@ export function cellToAxiosParamsDelete(cell) {
     }
 }
 
-export default function ReviewTable({ review, currentUser }) {
+export default function HelpRequestsTable({ helpRequests, currentUser }) {
 
     // const navigate = useNavigate();
 
@@ -31,13 +23,14 @@ export default function ReviewTable({ review, currentUser }) {
     //     navigate(`/ucsbdates/edit/${cell.row.values.id}`)
     // }
 
-
-    // Stryker disable next-line all : TODO try to make a good test for this
+    // Stryker disable all : hard to test for query caching
+    
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/MenuItemReview/all"]
+        ["/api/HelpRequest/all"]
     );
+    
     // Stryker enable all 
 
     // Stryker disable next-line all : TODO try to make a good test for this
@@ -45,34 +38,33 @@ export default function ReviewTable({ review, currentUser }) {
 
     const columns = [
         {
-            Header: 'id',
-            accessor: 'id', 
+            Header: 'Explanation',
+            accessor: 'explanation'
         },
         {
-            Header: 'itemID',
-            accessor: 'itemId', 
+            Header: 'ID',
+            accessor: 'id'
         },
         {
-            Header: 'reviewerEmail',
-            accessor: 'reviewerEmail',
+            Header: 'RequestTime',
+            accessor: 'requestTime'
         },
         {
-            Header: 'stars',
-            accessor: 'stars', // needed for tests
+            Header: 'Solved',
+            id: 'solved',
+            accessor: (row, _rowIndex) => String(row.solved) // hack needed for boolean values to show up
         },
         {
-            Header: 'date reviewed',
-            accessor: 'dateReviewed', // needed for tests
-
+            Header: 'TableOrBreakoutRoom',
+            accessor: 'tableOrBreakoutRoom'
         },
         {
-            Header: 'comments?',
-            accessor: 'comments', // needed for tests
+            Header: 'TeamID',
+            accessor: 'teamId'
         },
     ];
 
-
-    const testid = "ReviewTable";
+    const testid = "HelpRequestsTable";
 
     const columnsIfAdmin = [
         ...columns,
@@ -83,8 +75,8 @@ export default function ReviewTable({ review, currentUser }) {
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
     return <OurTable
-        data={review}
+        data={helpRequests}
         columns={columnsToDisplay}
-        testid={"ReviewTable"}
+        testid={testid}
     />;
 };
