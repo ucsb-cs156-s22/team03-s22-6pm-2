@@ -18,5 +18,4 @@
     "thresholds": { "high": 100, "low": 90, "break": 100 },
     "timeoutMS": 30000,
     "maxConcurrentTestRunners": 2
-
 }
