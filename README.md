@@ -5,7 +5,7 @@
 
 
 
-* Heroku App: <https://team02-s22-6pm-2.herokuapp.com/>
+* Heroku App: <https://s22-6pm-2-team02.herokuapp.com/>
 * Heroku QA: <https://team03-s22-6pm-2-qa.herokuapp.com/>
 
 * Storybook (production): <https://ucsb-cs156-s22.github.io/team03-s22-6pm-2-docs>
